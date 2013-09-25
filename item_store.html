@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+    <script type="text/javascript" src="bootstrap/js/jquery-2.0.3.js"></script>
+    <script type="text/javascript" src="keyboard-nav.js"></script>
+    <script type="text/javascript" src="db.js"></script>
+</head>
+
+<body>
+
+    <form class="well span4">
+        <label>Name</label>
+        <input id="name" type="text" class="span3" placeholder="Type Product Name"/><br/>
+        <label>Price</label>
+        <input id="price" type="text" class="span3" placeholder="Type Price"/><br/>
+ 
+        <button id="btnAdd" class="btn btn-primary">Add</button>
+        <button class="btn">Clear</button>
+    </form>
+    <section class="well span4">
+        <button id="btnPrint" class="btn btn-primary">Show All Items</button>
+        <table class="table table-striped">
+        <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+        </thead>
+        <tbody id="products_tbody">
+        </tbody>
+    </table>    
+    </section>
+    
+
+    <script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+</body>
+
+</html>
