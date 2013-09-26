@@ -58,11 +58,15 @@ var db;
             var store = transaction.objectStore("item");                    
 	    var index = store.index("name");
 	    var request = index.get(searchString);
+        var search_products_tbody = $("#search_products_tbody");
+            search_products_tbody.html('');
 	    request.onsuccess = function() {
 		var record = request.result;
 		if (record !== undefined) {
-		    // do something after match in found
-		    console.log("Name " + record.name + " Value : " + record.price);
+            search_products_tbody.append("<tr>"
+                        + getCell(record.name)
+                        + getCell(record.price)
+                        + "</tr>");
 		} else {
 		    // No match was found.
 		    console.log("no match found");
