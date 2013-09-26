@@ -38,7 +38,7 @@ var db;
         var btnDelete = document.getElementById("btnDelete");
         var btnPrint = document.getElementById("btnPrint");
         var reinitialize_db = document.getElementById("reinitialize_db");
-
+	var btnSearch = document.getElementById("btnSearch");
         btnAdd.addEventListener("click", function () {
             var name = $("#name").val();
             var price = $("#price").val();
@@ -50,6 +50,28 @@ var db;
             request.onsuccess = function (evt) {
                 // do something after the add succeeded
             };
+        }, false);
+
+	btnSearch.addEventListener("click", function () {
+            var searchString = $("#srchString").val();
+	    var transaction = db.transaction(["item"], "readonly");
+            var store = transaction.objectStore("item");                    
+	    var index = store.index("name");
+	    var request = index.get(searchString);
+	    request.onsuccess = function() {
+		var record = request.result;
+		if (record !== undefined) {
+		    // do something after match in found
+		    console.log("Name " + matching.name + " Value : " + matching.price);
+		} else {
+		    // No match was found.
+		    console.log("no match found");
+		}
+	    };
+
+            request.onerror = function (ev) {
+                console.log("index.get failed. Error: " + ev.message);
+             }
         }, false);
 
         reinitialize_db.addEventListener("click", function () {
