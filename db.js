@@ -62,7 +62,7 @@ var db;
 		var record = request.result;
 		if (record !== undefined) {
 		    // do something after match in found
-		    console.log("Name " + matching.name + " Value : " + matching.price);
+		    console.log("Name " + record.name + " Value : " + record.price);
 		} else {
 		    // No match was found.
 		    console.log("no match found");
